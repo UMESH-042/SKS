@@ -15,6 +15,8 @@ import {
 } from "lucide-react"
 import MobileMenu from "@/components/mobile-menu"
 import CopyrightYear from "@/components/copyright-year"
+import { HeroButtons, AboutButton, GalleryButton } from "@/components/action-buttons"
+import ContactForm from "@/components/contact-form"
 
 export default function Home() {
   return (
@@ -64,8 +66,8 @@ export default function Home() {
         <div
           className="h-[500px] md:h-[600px] bg-cover bg-center"
           // style={{ backgroundImage: "url('/placeholder.svg?height=600&width=1200&text=Welding+Sparks')" }}
-
-          style={{ backgroundImage: "url('/images/welding2.png')" }}
+    
+          style={{ backgroundImage: "url('/images/welding1.jpeg')" }}
 
         >
           <div className="container relative z-20 flex h-full flex-col justify-center px-4 sm:px-6">
@@ -74,15 +76,7 @@ export default function Home() {
                 SKS Repairing Works
               </h1>
               <p className="text-lg sm:text-xl text-zinc-300">Specialists in Truck Cabin Building & Body Repairing</p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button className="bg-amber-500 text-zinc-900 hover:bg-amber-600 w-full sm:w-auto">Get a Quote</Button>
-                <Button
-                  variant="outline"
-                  className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-zinc-900 w-full sm:w-auto"
-                >
-                  <PhoneCall className="mr-2 h-4 w-4" /> Call Now: 6355108714
-                </Button>
-              </div>
+              <HeroButtons />
             </div>
           </div>
         </div>
@@ -110,16 +104,12 @@ export default function Home() {
                 dedication to meeting deadlines. Every project is handled with the same level of care and precision,
                 whether it's a small repair or a complete cabin build.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-amber-500 text-zinc-900 hover:bg-amber-600 w-full sm:w-auto">
-                  Learn More About Our Journey
-                </Button>
-              </div>
+              <AboutButton />
             </div>
             <div className="relative mt-8 lg:mt-0">
               <div className="absolute -top-4 -left-4 w-16 md:w-24 h-16 md:h-24 bg-amber-500 rounded-lg opacity-20"></div>
               <img
-                src="/placeholder.svg?height=400&width=600&text=Workshop+Image"
+                src="/images/welding.jpeg"
                 alt="Welding workshop"
                 className="rounded-lg relative z-10 w-full h-auto"
               />
@@ -215,9 +205,58 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
 
-      {/* Gallery Section */}
-      <section id="gallery" className="py-16 md:py-24 bg-zinc-800">
+     {/* Gallery Section */}
+<section id="gallery" className="py-16 md:py-24 bg-zinc-800">
+  <div className="container px-4 sm:px-6">
+    <div className="text-center mb-12 md:mb-16">
+      <h2 className="text-2xl md:text-3xl font-bold">Our Work</h2>
+      <div className="mt-2 h-1 w-20 bg-amber-500 mx-auto"></div>
+      <p className="mt-4 text-zinc-300 max-w-2xl mx-auto">
+        Take a look at some of our recent projects and completed work
+      </p>
+    </div>
+
+    {/** Declare the actual images to show here */}
+    {(() => {
+      const galleryImages = [
+        { title: "Truck Cabin Build", file: "welding.jpeg" },
+        { title: "Welding Process", file: "welding1.jpeg" },
+        { title: "Completed Cabin", file: "welding.jpeg" },
+        { title: "Body Repair", file: "welding1.jpeg" },
+        { title: "Workshop Action", file: "welding.jpeg" },
+        { title: "Before-After Repair", file: "welding1.jpeg" },
+      ];
+
+      return (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {galleryImages.map((item, index) => (
+            <div key={index} className="overflow-hidden rounded-lg group relative">
+              <img
+                src={`/images/${item.file}`} // Make sure images are in `public/images/`
+                alt={item.title}
+                className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <div className="p-4">
+                  <h3 className="text-base md:text-lg font-bold">{item.title}</h3>
+                  <p className="text-xs md:text-sm text-zinc-300">Professional craftsmanship</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    })()}
+
+    <div className="text-center mt-10 md:mt-12">
+      <GalleryButton />
+    </div>
+  </div>
+</section>
+
+      {/* <section id="gallery" className="py-16 md:py-24 bg-zinc-800">
         <div className="container px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl md:text-3xl font-bold">Our Work</h2>
@@ -226,6 +265,7 @@ export default function Home() {
               Take a look at some of our recent projects and completed work
             </p>
           </div>
+          
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -253,15 +293,10 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-10 md:mt-12">
-            <Button
-              variant="outline"
-              className="border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-zinc-900"
-            >
-              View All Projects
-            </Button>
+            <GalleryButton />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
       <section id="testimonials" className="py-16 md:py-24 bg-zinc-900">
@@ -419,8 +454,7 @@ export default function Home() {
                   </a>
                 </div>
               </div> */}
-              {/* Google Map */}
-<div className="mt-6 rounded-lg overflow-hidden h-[200px] sm:h-[250px] md:h-[300px] bg-zinc-700 relative">
+              <div className="mt-6 rounded-lg overflow-hidden h-[200px] sm:h-[250px] md:h-[300px] bg-zinc-700 relative">
   <iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3688.781064091915!2d73.13670107384367!3d22.399609539291248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcb84428f9a71%3A0xc451f839bae6017f!2sSHRI%20KALIKA%20SHOW%20REPAIRING!5e0!3m2!1sen!2sin!4v1743979084153!5m2!1sen!2sin"
     width="100%"
@@ -437,56 +471,7 @@ export default function Home() {
 
             <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-700">
               <h3 className="text-lg md:text-xl font-bold mb-6">Send Us a Message</h3>
-              <form className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-xs md:text-sm font-medium">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="phone" className="text-xs md:text-sm font-medium">
-                      Phone
-                    </label>
-                    <input
-                      id="phone"
-                      className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm"
-                      placeholder="Your phone number"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-xs md:text-sm font-medium">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm"
-                    placeholder="Your email address"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-xs md:text-sm font-medium">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm"
-                    placeholder="How can we help you?"
-                  ></textarea>
-                </div>
-
-                <Button className="w-full bg-amber-500 text-zinc-900 hover:bg-amber-600">Send Message</Button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </div>
@@ -702,4 +687,3 @@ export default function Home() {
     </div>
   )
 }
-
