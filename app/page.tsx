@@ -17,6 +17,7 @@ import MobileMenu from "@/components/mobile-menu"
 import CopyrightYear from "@/components/copyright-year"
 import { HeroButtons, AboutButton, GalleryButton } from "@/components/action-buttons"
 import ContactForm from "@/components/contact-form"
+import Image from "next/image"
 
 export default function Home() {
   return (
@@ -66,9 +67,7 @@ export default function Home() {
         <div
           className="h-[500px] md:h-[600px] bg-cover bg-center"
           // style={{ backgroundImage: "url('/placeholder.svg?height=600&width=1200&text=Welding+Sparks')" }}
-    
           style={{ backgroundImage: "url('/images/welding1.jpeg')" }}
-
         >
           <div className="container relative z-20 flex h-full flex-col justify-center px-4 sm:px-6">
             <div className="max-w-2xl space-y-4 md:space-y-6">
@@ -108,10 +107,12 @@ export default function Home() {
             </div>
             <div className="relative mt-8 lg:mt-0">
               <div className="absolute -top-4 -left-4 w-16 md:w-24 h-16 md:h-24 bg-amber-500 rounded-lg opacity-20"></div>
-              <img
+              <Image
                 src="/images/welding.jpeg"
                 alt="Welding workshop"
                 className="rounded-lg relative z-10 w-full h-auto"
+                width={600}
+                height={400}
               />
               <div className="absolute -bottom-4 -right-4 w-16 md:w-24 h-16 md:h-24 bg-amber-500 rounded-lg opacity-20"></div>
             </div>
@@ -205,58 +206,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
 
-     {/* Gallery Section */}
-<section id="gallery" className="py-16 md:py-24 bg-zinc-800">
-  <div className="container px-4 sm:px-6">
-    <div className="text-center mb-12 md:mb-16">
-      <h2 className="text-2xl md:text-3xl font-bold">Our Work</h2>
-      <div className="mt-2 h-1 w-20 bg-amber-500 mx-auto"></div>
-      <p className="mt-4 text-zinc-300 max-w-2xl mx-auto">
-        Take a look at some of our recent projects and completed work
-      </p>
-    </div>
-
-    {/** Declare the actual images to show here */}
-    {(() => {
-      const galleryImages = [
-        { title: "Truck Cabin Build", file: "welding.jpeg" },
-        { title: "Welding Process", file: "welding1.jpeg" },
-        { title: "Completed Cabin", file: "welding.jpeg" },
-        { title: "Body Repair", file: "welding1.jpeg" },
-        { title: "Workshop Action", file: "welding.jpeg" },
-        { title: "Before-After Repair", file: "welding1.jpeg" },
-      ];
-
-      return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((item, index) => (
-            <div key={index} className="overflow-hidden rounded-lg group relative">
-              <img
-                src={`/images/${item.file}`} // Make sure images are in `public/images/`
-                alt={item.title}
-                className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                <div className="p-4">
-                  <h3 className="text-base md:text-lg font-bold">{item.title}</h3>
-                  <p className="text-xs md:text-sm text-zinc-300">Professional craftsmanship</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      );
-    })()}
-
-    <div className="text-center mt-10 md:mt-12">
-      <GalleryButton />
-    </div>
-  </div>
-</section>
-
-      {/* <section id="gallery" className="py-16 md:py-24 bg-zinc-800">
+      {/* Gallery Section */}
+      <section id="gallery" className="py-16 md:py-24 bg-zinc-800">
         <div className="container px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl md:text-3xl font-bold">Our Work</h2>
@@ -265,38 +217,46 @@ export default function Home() {
               Take a look at some of our recent projects and completed work
             </p>
           </div>
-          
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              "Truck Cabin Build",
-              "Welding Process",
-              "Completed Cabin",
-              "Body Repair",
-              "Workshop Action",
-              "Before-After Repair",
-            ].map((item, index) => (
-              <div key={index} className="overflow-hidden rounded-lg group relative">
-                <img
-                  src={`/placeholder.svg?height=300&width=400&text=${item.replace(" ", "+")}`}
-                  alt={item}
-                  className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-4">
-                    <h3 className="text-base md:text-lg font-bold">{item}</h3>
-                    <p className="text-xs md:text-sm text-zinc-300">Professional craftsmanship</p>
+          {/** Declare the actual images to show here */}
+          {(() => {
+            const galleryImages = [
+              { title: "Truck Cabin Build", file: "welding.jpeg" },
+              { title: "Welding Process", file: "welding1.jpeg" },
+              { title: "Completed Cabin", file: "welding.jpeg" },
+              { title: "Body Repair", file: "welding1.jpeg" },
+              { title: "Workshop Action", file: "welding.jpeg" },
+              { title: "Before-After Repair", file: "welding1.jpeg" },
+            ];
+
+            return (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {galleryImages.map((item, index) => (
+                  <div key={index} className="overflow-hidden rounded-lg group relative">
+                    <img
+                      src={`/images/${item.file}`} // Make sure images are in `public/images/`
+                      alt={item.title}
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                      <div className="p-4">
+                        <h3 className="text-base md:text-lg font-bold">{item.title}</h3>
+                        <p className="text-xs md:text-sm text-zinc-300">Professional craftsmanship</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
+            );
+          })()}
 
           <div className="text-center mt-10 md:mt-12">
             <GalleryButton />
           </div>
         </div>
-      </section> */}
+      </section>
+
+
 
       {/* Testimonials Section */}
       <section id="testimonials" className="py-16 md:py-24 bg-zinc-900">
@@ -337,7 +297,7 @@ export default function Home() {
                     <p className="text-xs md:text-sm text-zinc-400">{testimonial.company}</p>
                   </div>
                 </div>
-                <p className="text-zinc-300 italic text-sm md:text-base">"{testimonial.text}"</p>
+                <p className="text-zinc-300 italic text-sm md:text-base">{testimonial.text}</p>
                 <div className="flex mt-4">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -441,31 +401,18 @@ export default function Home() {
               </div>
 
               {/* Google Map */}
-              {/* <div className="mt-6 rounded-lg overflow-hidden h-[200px] sm:h-[250px] md:h-[300px] bg-zinc-700 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <p className="text-zinc-400 text-sm md:text-base">Google Map Embed</p>
-                  <a
-                    href="https://g.co/kgs/Dzp3ZSE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute inset-0"
-                  >
-                    <span className="sr-only">Open in Google Maps</span>
-                  </a>
-                </div>
-              </div> */}
               <div className="mt-6 rounded-lg overflow-hidden h-[200px] sm:h-[250px] md:h-[300px] bg-zinc-700 relative">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3688.781064091915!2d73.13670107384367!3d22.399609539291248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcb84428f9a71%3A0xc451f839bae6017f!2sSHRI%20KALIKA%20SHOW%20REPAIRING!5e0!3m2!1sen!2sin!4v1743979084153!5m2!1sen!2sin"
-    width="100%"
-    height="100%"
-    style={{ border: 0 }}
-    // allowFullScreen=""
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-    className="absolute inset-0"
-  ></iframe>
-</div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3688.781064091915!2d73.13670107384367!3d22.399609539291248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcb84428f9a71%3A0xc451f839bae6017f!2sSHRI%20KALIKA%20SHOW%20REPAIRING!5e0!3m2!1sen!2sin!4v1743979084153!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  // allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0"
+                ></iframe>
+              </div>
 
             </div>
 
