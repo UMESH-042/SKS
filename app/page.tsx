@@ -94,7 +94,7 @@ export default function Home() {
                 grown into a trusted name in the industry.
               </p>
               <p className="text-zinc-300 mb-6">
-                With over 15 years of experience, Mr. Chauhan has built a reputation for quality craftsmanship,
+                With over 30 years of experience, Mr. Chauhan has built a reputation for quality craftsmanship,
                 reliability, and attention to detail. Our team specializes in building truck cabins for major brands
                 like TATA and Ashok Leyland from scratch.
               </p>
